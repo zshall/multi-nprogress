@@ -1,9 +1,9 @@
 NProgress
 =========
 
-[![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
-[![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
-[![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/nprogress/badge?style=rounded)](https://www.jsdelivr.com/package/npm/nprogress)
+[![Status](https://api.travis-ci.org/RamyRais/multi-nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
+[![npm version](https://img.shields.io/npm/v/multi-nprogress.png)](https://npmjs.org/package/multi-nprogress "View this project on npm")
+[![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/multi-nprogress/badge?style=rounded)](https://www.jsdelivr.com/package/npm/multi-nprogress)
 
 > Minimalist progress bar
 
@@ -208,32 +208,29 @@ Support
 -------
 
 __Bugs and requests__: submit them through the project's issues tracker.<br>
-[![Issues](http://img.shields.io/github/issues/rstacruz/nprogress.svg)]( https://github.com/rstacruz/nprogress/issues )
+[![Issues](http://img.shields.io/github/issues/RamyRais/multi-nprogress.svg)]( https://github.com/RamyRais/multi-nprogress/issues )
 
-__Questions__: ask them at StackOverflow with the tag *nprogress*.<br>
-[![StackOverflow](http://img.shields.io/badge/stackoverflow-nprogress-brightgreen.svg)]( http://stackoverflow.com/questions/tagged/nprogress )
-
-__Chat__: join us at gitter.im.<br>
-[![Chat](http://img.shields.io/badge/gitter-rstacruz/nprogress-brightgreen.svg)]( https://gitter.im/rstacruz/nprogress )
-
-[default template]: https://github.com/rstacruz/nprogress/blob/master/nprogress.js#L31
-
-[Turbolinks]: https://github.com/rails/turbolinks
-[nprogress.js]: http://ricostacruz.com/nprogress/nprogress.js
-[nprogress.css]: http://ricostacruz.com/nprogress/nprogress.css
 
 Thanks
 ------
+**multi-nprogress** © 2018 Ramy Rais. Released under the [MIT License].<br> 
 
-**NProgress** © 2013-2017, Rico Sta. Cruz. Released under the [MIT License].<br>
 Authored and maintained by Rico Sta. Cruz with help from [contributors].
 
-> [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
-> GitHub [@rstacruz](https://github.com/rstacruz) &nbsp;&middot;&nbsp;
-> Twitter [@rstacruz](https://twitter.com/rstacruz)
+
+
+Spacial Thanks
+------
+**multi-nprogress** is based on [**NProgress**](https://github.com/rstacruz/nprogress) by [Rico Sta. Cruz.](http://ricostacruz.com) <br>
+
+
+> GitHub [@RamyRais](https://github.com/RamyRais) &nbsp;&middot;&nbsp;
+
+<!-- 
+LINKS
+-->
+[nprogress.js]: https://github.com/RamyRais/multi-nprogress/blob/master/nprogress.js
+[nprogress.css]: https://github.com/RamyRais/multi-nprogress/blob/master/nprogress.css
 
 [MIT License]: http://mit-license.org/
-[contributors]: http://github.com/rstacruz/nprogress/contributors
-
-[![](https://img.shields.io/github/followers/rstacruz.svg?style=social&label=@rstacruz)](https://github.com/rstacruz) &nbsp;
-[![](https://img.shields.io/twitter/follow/rstacruz.svg?style=social&label=@rstacruz)](https://twitter.com/rstacruz)
+[contributors]: http://github.com/RamyRais/multi-nprogress/contributors
