@@ -253,6 +253,71 @@
             assert.equal($("#parent1 .nprogress").length, 0);
         });
     })
+      describe('Tests having instance under parent as another instance', function() {
+          var nprogress;
+          var nested;
+
+          beforeEach(function() {
+              nprogress = $('<div>', {id: 'nprogress'}).appendTo('body');
+              nested = $('<div>', {id: 'nested'}).appendTo(nprogress);
+          });
+
+
+          afterEach(function() {
+              nprogress.remove();
+              nested.remove();
+          });
+
+
+          it('should render 2 progress bar', function() {
+              var nprogress = NProgressModule();
+              var nested = NProgressModule();
+              nprogress.configure({parent: '#nprogress'});
+              nested.configure({parent: '#nested'});
+
+              nprogress.set(0);
+              nested.set(0);
+
+              assert.equal($("#nprogress > .nprogress").length, 1);
+              assert.equal($("#nested > .nprogress").length, 1);
+          });
+
+
+          it('should not affect each other after multi set', function(done) {
+            var nprogress = NProgressModule();
+            var nested = NProgressModule();
+            nprogress.configure({parent: '#nprogress'});
+            nested.configure({parent: '#nested', speed: 10});
+
+            nprogress.set(0);
+            nested.set(0).set(1);
+
+            assert.equal($("#nprogress > .nprogress").length, 1);
+            assert.equal($("#nested > .nprogress").length, 1);
+
+            setTimeout(function() {
+              assert.equal($("#nested > .nprogress").length, 0);
+              done();
+            }, 70);
+          });
+
+
+          it('should not affect each other when removing one', function() {
+              var nprogress = NProgressModule();
+              var nested = NProgressModule();
+              nprogress.configure({parent: '#nprogress'});
+              nested.configure({parent: '#nested', speed: 10});
+
+              nprogress.set(0);
+              nested.set(0);
+
+              assert.equal($("#nprogress > .nprogress").length, 1);
+              assert.equal($("#nested > .nprogress").length, 1);
+
+              nprogress.remove();
+              assert.equal($("#nprogress > .nprogress").length, 0);
+          });
+      })
   });
 
 })();
