@@ -8,7 +8,7 @@
     }
   ],
   "description": "Simple slim progress bars",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/RamyRais/multi-nprogress"
