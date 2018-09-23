@@ -18,7 +18,7 @@
     });
 
     afterEach(function() {
-      $("#nprogress").remove();
+      $(".nprogress").remove();
       $('html').attr('class', '');
       NProgress.status = null;
 
@@ -29,19 +29,19 @@
     describe('.set()', function() {
       it('.set(0) must render', function() {
         NProgress.set(0);
-        assert.equal($("#nprogress").length, 1);
-        assert.equal($("#nprogress .bar").length, 1);
-        assert.equal($("#nprogress .peg").length, 1);
-        assert.equal($("#nprogress .spinner").length, 1);
+        assert.equal($(".nprogress").length, 1);
+        assert.equal($(".nprogress .bar").length, 1);
+        assert.equal($(".nprogress .peg").length, 1);
+        assert.equal($(".nprogress .spinner").length, 1);
       });
 
       it('.set(1) should appear and disappear', function(done) {
         NProgress.configure({ speed: 10 });
         NProgress.set(0).set(1);
-        assert.equal($("#nprogress").length, 1);
+        assert.equal($(".nprogress").length, 1);
 
         setTimeout(function() {
-          assert.equal($("#nprogress").length, 0);
+          assert.equal($(".nprogress").length, 0);
           done();
         }, 70);
       });
@@ -67,7 +67,7 @@
     describe('.start()', function() {
       it('must render', function(done) {
         NProgress.start();
-        assert.equal($("#nprogress").length, 1);
+        assert.equal($(".nprogress").length, 1);
         done();
       });
 
@@ -82,7 +82,7 @@
 
         NProgress.start();
 
-        assert.isTrue($("#nprogress").parent().is(test));
+        assert.isTrue($(".nprogress").parent().is(test));
         assert.isTrue($(NProgress.settings.parent).hasClass("nprogress-custom-parent"));
 
         test.remove();
@@ -94,12 +94,12 @@
     describe('.done()', function() {
       it('must not render without start', function() {
         NProgress.done();
-        assert.equal($("#nprogress").length, 0);
+        assert.equal($(".nprogress").length, 0);
       });
 
       it('.done(true) must render', function() {
         NProgress.done(true);
-        assert.equal($("#nprogress").length, 1);
+        assert.equal($(".nprogress").length, 1);
       });
     });
 
@@ -112,7 +112,7 @@
 
         var parent = $(NProgress.settings.parent);
         assert.isFalse(parent.hasClass('nprogress-custom-parent'));
-        assert.equal(parent.find('#nprogress').length, 0);
+        assert.equal(parent.find('.nprogress').length, 0);
       });
 
 
@@ -124,7 +124,7 @@
         var parent = $(NProgress.settings.parent);
         setTimeout(function() {
           assert.isFalse(parent.hasClass('nprogress-custom-parent'));
-          assert.equal(parent.find('#nprogress').length, 0);
+          assert.equal(parent.find('.nprogress').length, 0);
           done();
         }, NProgress.settings.trickleSpeed + 1);        
       });
@@ -135,7 +135,7 @@
     describe('.inc()', function() {
       it('should render', function() {
         NProgress.inc();
-        assert.equal($("#nprogress").length, 1);
+        assert.equal($(".nprogress").length, 1);
       });
 
       it('should start with minimum', function() {
@@ -172,7 +172,7 @@
       it('should render spinner by default', function() {
         NProgress.start();
 
-        assert.equal($("#nprogress .spinner").length, 1);
+        assert.equal($(".nprogress .spinner").length, 1);
       });
 
       it('should be true by default', function() {
@@ -183,7 +183,7 @@
         NProgress.configure({ showSpinner: false });
         NProgress.start();
 
-        assert.equal($("#nprogress .spinner").length, 0);
+        assert.equal($(".nprogress .spinner").length, 0);
       });
     });
 
@@ -213,8 +213,8 @@
             nprogress1.set(0);
             nprogress2.set(0);
 
-            assert.equal($("#parent1 #nprogress").length, 1);
-            assert.equal($("#parent2 #nprogress").length, 1);
+            assert.equal($("#parent1 .nprogress").length, 1);
+            assert.equal($("#parent2 .nprogress").length, 1);
         });
 
 
@@ -227,11 +227,11 @@
             nprogress1.set(0);
             nprogress2.set(0).set(1);
 
-            assert.equal($("#parent1 #nprogress").length, 1);
-            assert.equal($("#parent2 #nprogress").length, 1);
+            assert.equal($("#parent1 .nprogress").length, 1);
+            assert.equal($("#parent2 .nprogress").length, 1);
 
             setTimeout(function() {
-              assert.equal($("#parent2 #nprogress").length, 0);
+              assert.equal($("#parent2 .nprogress").length, 0);
               done();
             }, 70);
         });
@@ -246,13 +246,78 @@
             nprogress1.set(0);
             nprogress2.set(0);
 
-            assert.equal($("#parent1 #nprogress").length, 1);
-            assert.equal($("#parent2 #nprogress").length, 1);
+            assert.equal($("#parent1 .nprogress").length, 1);
+            assert.equal($("#parent2 .nprogress").length, 1);
 
             nprogress1.remove();
-            assert.equal($("#parent1 #nprogress").length, 0);
+            assert.equal($("#parent1 .nprogress").length, 0);
         });
     })
+      describe('Tests having instance under parent as another instance', function() {
+          var nprogress;
+          var nested;
+
+          beforeEach(function() {
+              nprogress = $('<div>', {id: 'nprogress'}).appendTo('body');
+              nested = $('<div>', {id: 'nested'}).appendTo(nprogress);
+          });
+
+
+          afterEach(function() {
+              nprogress.remove();
+              nested.remove();
+          });
+
+
+          it('should render 2 progress bar', function() {
+              var nprogress = NProgressModule();
+              var nested = NProgressModule();
+              nprogress.configure({parent: '#nprogress'});
+              nested.configure({parent: '#nested'});
+
+              nprogress.set(0);
+              nested.set(0);
+
+              assert.equal($("#nprogress > .nprogress").length, 1);
+              assert.equal($("#nested > .nprogress").length, 1);
+          });
+
+
+          it('should not affect each other after multi set', function(done) {
+            var nprogress = NProgressModule();
+            var nested = NProgressModule();
+            nprogress.configure({parent: '#nprogress'});
+            nested.configure({parent: '#nested', speed: 10});
+
+            nprogress.set(0);
+            nested.set(0).set(1);
+
+            assert.equal($("#nprogress > .nprogress").length, 1);
+            assert.equal($("#nested > .nprogress").length, 1);
+
+            setTimeout(function() {
+              assert.equal($("#nested > .nprogress").length, 0);
+              done();
+            }, 70);
+          });
+
+
+          it('should not affect each other when removing one', function() {
+              var nprogress = NProgressModule();
+              var nested = NProgressModule();
+              nprogress.configure({parent: '#nprogress'});
+              nested.configure({parent: '#nested', speed: 10});
+
+              nprogress.set(0);
+              nested.set(0);
+
+              assert.equal($("#nprogress > .nprogress").length, 1);
+              assert.equal($("#nested > .nprogress").length, 1);
+
+              nprogress.remove();
+              assert.equal($("#nprogress > .nprogress").length, 0);
+          });
+      })
   });
 
 })();

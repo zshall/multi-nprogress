@@ -221,7 +221,7 @@
    */
 
   NProgress.getElement = function() {
-    return document.querySelector(Settings.parent + ' #nprogress');
+    return document.querySelector(Settings.parent + ' > .nprogress');
   }
 
 
@@ -236,7 +236,7 @@
     addClass(document.documentElement, 'nprogress-busy');
 
     var progress = document.createElement('div');
-    progress.id = 'nprogress';
+    progress.className = 'nprogress';
     progress.innerHTML = Settings.template;
 
     var bar      = progress.querySelector(Settings.barSelector),
