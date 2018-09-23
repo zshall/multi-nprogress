@@ -1,13 +1,13 @@
 NProgress
 =========
 
-[![Status](https://api.travis-ci.org/RamyRais/multi-nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
+[![Status](https://api.travis-ci.org/RamyRais/multi-nprogress.svg?branch=master)](https://travis-ci.org/RamyRais/multi-nprogress) 
 [![npm version](https://img.shields.io/npm/v/multi-nprogress.png)](https://npmjs.org/package/multi-nprogress "View this project on npm")
 [![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/multi-nprogress/badge?style=rounded)](https://www.jsdelivr.com/package/npm/multi-nprogress)
 
 > Minimalist progress bar
 
-Slim progress bars for Ajax'y applications. Inspired by Google, YouTube, and
+Slim progress bars for Ajax applications. Inspired by Google, YouTube, and
 Medium.
 
 Installation
@@ -20,18 +20,14 @@ Add [nprogress.js] and [nprogress.css] to your project.
 <link rel='stylesheet' href='nprogress.css'/>
 ```
 
-NProgress is available via [bower] and [npm].
+NProgress is available via [npm].
 
     $ npm install --save nprogress
 
 Also available via [unpkg] CDN:
 
-- https://unpkg.com/nprogress@0.2.0/nprogress.js
-- https://unpkg.com/nprogress@0.2.0/nprogress.css
-
-[bower]: http://bower.io/search/?q=nprogress
-[npm]: https://www.npmjs.org/package/nprogress
-[unpkg]: https://unpkg.com/
+- https://unpkg.com/multi-nprogress@0.3.2/nprogress.js
+- https://unpkg.com/multi-nprogress@0.3.1/nprogress.css
 
 Basic usage
 -----------
@@ -224,7 +220,7 @@ Spacial Thanks
 **multi-nprogress** is based on [**NProgress**](https://github.com/rstacruz/nprogress) by [Rico Sta. Cruz.](http://ricostacruz.com) <br>
 
 
-> GitHub [@RamyRais](https://github.com/RamyRais) &nbsp;&middot;&nbsp;
+> GitHub [@RamyRais](https://github.com/RamyRais)
 
 <!-- 
 LINKS
@@ -234,3 +230,4 @@ LINKS
 
 [MIT License]: http://mit-license.org/
 [contributors]: http://github.com/RamyRais/multi-nprogress/contributors
+[npm]: https://www.npmjs.com/package/multi-nprogress
