@@ -236,7 +236,7 @@
     addClass(document.documentElement, 'nprogress-busy');
 
     var progress = document.createElement('div');
-    progress.id = '#nprogress';
+    progress.id = 'nprogress';
     progress.className = 'nprogress';
     progress.innerHTML = Settings.template;
 
