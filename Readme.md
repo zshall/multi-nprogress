@@ -26,8 +26,8 @@ NProgress is available via [npm].
 
 Also available via [unpkg] CDN:
 
-- https://unpkg.com/multi-nprogress@0.3.2/nprogress.js
-- https://unpkg.com/multi-nprogress@0.3.1/nprogress.css
+- https://unpkg.com/multi-nprogress@0.3.3/nprogress.js
+- https://unpkg.com/multi-nprogress@0.3.3/nprogress.css
 
 Basic usage
 -----------
