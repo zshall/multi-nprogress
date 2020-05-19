@@ -223,7 +223,10 @@
   NProgress.getElement = function() {
     var parent = NProgress.getParent();
     // if the parent contains nested NProgress instances, select just the direct child
-    return Array.prototype.slice.call(parent.querySelectorAll('.nprogress')).find(p => p.parentElement === parent);
+    if (parent) {
+      return Array.prototype.slice.call(parent.querySelectorAll('.nprogress')).find(p => p.parentElement === parent);
+    }
+    return null;
   }
 
   /**
