@@ -221,7 +221,23 @@
    */
 
   NProgress.getElement = function() {
-    return document.querySelector(Settings.parent + ' > .nprogress');
+    return NProgress.getParent().querySelector('.nprogress');
+  }
+
+  /**
+   * (Internal) get the parent container, based on Settings.parent
+   * If set to a string, use `querySelector`.
+   * If set to an HTMLElement, return the element.
+   */
+
+  NProgress.getParent = function () {
+    if (Settings.parent instanceof HTMLElement) {
+      return Settings.parent;
+    }
+
+    if (typeof Settings.parent === 'string') {
+      return document.querySelector(Settings.parent);
+    }
   }
 
 
@@ -242,7 +258,7 @@
 
     var bar      = progress.querySelector(Settings.barSelector),
         perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
-        parent   = document.querySelector(Settings.parent),
+        parent   = NProgress.getParent(),
         spinner;
 
     css(bar, {
@@ -270,7 +286,7 @@
   NProgress.remove = function() {
     NProgress.status = null;
     removeClass(document.documentElement, 'nprogress-busy');
-    removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent');
+    removeClass(NProgress.getParent(), 'nprogress-custom-parent');
     var progress = NProgress.getElement();
     progress && removeElement(progress);
   };

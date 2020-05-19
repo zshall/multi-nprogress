@@ -172,7 +172,8 @@ nprogress.configure({ showSpinner: false });
 ~~~
 
 #### `parent`
-specify this to change the parent container. (default: `body`)
+Specify this to change the parent container. (default: `body`)
+Can either specify a query selector (`#id`, `.class`, `tag`) or an `HTMLElement` directly.
 
 ~~~ js
 nprogress.configure({ parent: '#container' });
