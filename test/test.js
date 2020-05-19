@@ -217,6 +217,32 @@
             assert.equal($("#parent2 .nprogress").length, 1);
         });
 
+        it('should render 2 progress bars when one parent is an HTMLElement', function() {
+            var nprogress1 = NProgressModule();
+            var nprogress2 = NProgressModule();
+            nprogress1.configure({parent: document.querySelector('#parent1') });
+            nprogress2.configure({parent: '#parent2'});
+
+            nprogress1.set(0);
+            nprogress2.set(0);
+
+            assert.equal($("#parent1 .nprogress").length, 1);
+            assert.equal($("#parent2 .nprogress").length, 1);
+        });
+
+        it('should render 2 progress bars when both parents are HTMLElements', function() {
+            var nprogress1 = NProgressModule();
+            var nprogress2 = NProgressModule();
+            nprogress1.configure({parent: document.querySelector('#parent1') });
+            nprogress2.configure({ parent: document.querySelector('#parent2') });
+
+            nprogress1.set(0);
+            nprogress2.set(0);
+
+            assert.equal($("#parent1 .nprogress").length, 1);
+            assert.equal($("#parent2 .nprogress").length, 1);
+        });
+
 
         it('should not affect each other after multi set', function(done) {
             var nprogress1 = NProgressModule();
@@ -301,7 +327,6 @@
             }, 70);
           });
 
-
           it('should not affect each other when removing one', function() {
               var nprogress = NProgressModule();
               var nested = NProgressModule();
@@ -314,7 +339,23 @@
               assert.equal($("#nprogress > .nprogress").length, 1);
               assert.equal($("#nested > .nprogress").length, 1);
 
-              nprogress.remove();
+              nprogress.remove();              
+              assert.equal($("#nprogress > .nprogress").length, 0);
+          });
+
+          it('should work with parents are HTMLElements', function() {
+              var nprogress = NProgressModule();
+              var nested = NProgressModule();
+              nprogress.configure({parent: document.querySelector('body > #nprogress')});
+              nested.configure({parent: document.querySelector('#nested'), speed: 10});
+
+              nprogress.set(0);
+              nested.set(0);
+
+              assert.equal($("#nprogress > .nprogress").length, 1);
+              assert.equal($("#nested > .nprogress").length, 1);
+
+              nprogress.remove();              
               assert.equal($("#nprogress > .nprogress").length, 0);
           });
       })

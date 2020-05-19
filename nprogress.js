@@ -221,7 +221,9 @@
    */
 
   NProgress.getElement = function() {
-    return NProgress.getParent().querySelector('.nprogress');
+    var parent = NProgress.getParent();
+    // if the parent contains nested NProgress instances, select just the direct child
+    return Array.prototype.slice.call(parent.querySelectorAll('.nprogress')).find(p => p.parentElement === parent);
   }
 
   /**
