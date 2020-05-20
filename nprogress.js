@@ -26,7 +26,9 @@
     showSpinner: true,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
+    pegSelector: '.peg',
     parent: 'body',
+    color: '',
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -264,15 +266,30 @@
     var bar      = progress.querySelector(Settings.barSelector),
         perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
         parent   = NProgress.getParent(),
-        spinner;
+        spinner  = progress.querySelector(Settings.spinnerSelector),
+        peg      = progress.querySelector(Settings.pegSelector);
 
     css(bar, {
       transition: 'all 0 linear',
       transform: 'translate3d(' + perc + '%,0,0)'
     });
 
+    if (Settings.color) {
+      css(bar, {
+        background: Settings.color
+      });
+
+      css(spinner.querySelector('.spinner-icon'), {
+        'border-top-color': Settings.color,
+        'border-left-color': Settings.color
+      });
+
+      css(peg, {
+        color: Settings.color
+      });
+    }
+
     if (!Settings.showSpinner) {
-      spinner = progress.querySelector(Settings.spinnerSelector);
       spinner && removeElement(spinner);
     }
 
